@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import PartnerTile from './PartnerTile';
 import {PartnerData} from '../types';
 import Searchbar from "./Searchbar.tsx";
@@ -27,8 +27,6 @@ function Dashboard() {
     const [name, setName] = useState<string>();
     const [logo, setLogo] = useState<string>();
     const [description, setDescription] = useState<string>();
-
-    const [fieldsComplete, setFieldsComplete] = useState(false);
 
     // Load all partners on initial page load
     useEffect(() => {

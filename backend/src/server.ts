@@ -83,25 +83,48 @@ app.delete('/delete', (req, res) => {
 app.post('/update', (req, res) => {
     const updatePartner = req.body;
 
-    if (updatePartner.hasOwnProperty('originalName')
-        && updatePartner.hasOwnProperty('active')
-        && updatePartner.hasOwnProperty('name')
-        && updatePartner.hasOwnProperty('thumbnailUrl')
-        && updatePartner.hasOwnProperty('description')) {
+    let thumbnail = partners[updatePartner['originalName']]['thumbnailUrl'];
+    let active = partners[updatePartner['originalName']]['active'];
+    let description = partners[updatePartner['originalName']]['description'];
+    let name = partners[updatePartner['originalName']]['name']
+
+    console.log(thumbnail);
+    console.log(active);
+    console.log(description);
+    console.log(name);
+
+    console.log(updatePartner);
+
+    try {
+        if (updatePartner.hasOwnProperty('active')) {
+            active = updatePartner['active'];
+        }
+        if (updatePartner.hasOwnProperty('name')) {
+            name = updatePartner['name'];
+        }
+        if (updatePartner.hasOwnProperty('thumbnailUrl')) {
+            thumbnail = updatePartner['thumbnailUrl'];
+        }
+        if (updatePartner.hasOwnProperty('description')) {
+            description = updatePartner['description'];
+        }
 
         delete partners[updatePartner['originalName']];
 
-        partners[updatePartner['name']] = {
-            thumbnailUrl: updatePartner['thumbnailUrl'],
-            name: updatePartner['name'],
-            active: updatePartner['active'],
-            description: updatePartner['description']
+        console.log(thumbnail);
+        console.log(active);
+        console.log(description);
+        console.log(name);
+
+        partners[name] = {
+            thumbnailUrl: thumbnail,
+            name: name,
+            active: active,
+            description: description
         };
 
-        console.log(partners);
-
         res.status(200).send(partners);
-    } else {
+    } catch {
         res.sendStatus(400)
     }
 })

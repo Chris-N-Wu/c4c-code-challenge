@@ -51,27 +51,6 @@ function PartnerTile(props: Props) {
     };
     const handleCloseModify = (modified?: boolean) => {
         if (modified) {
-            if (active === undefined) {
-                setActive(props.partner.active);
-            }
-
-            if (name === undefined) {
-                setName(props.partner.name);
-            }
-
-            if (logo === undefined) {
-                setLogo(props.partner.thumbnailUrl);
-            }
-
-            if (description === undefined) {
-                setDescription(props.partner.description);
-            }
-
-            console.log(active);
-            console.log(name);
-            console.log(logo);
-            console.log(description);
-
             modifyItem(props.partner.name);
         }
 
