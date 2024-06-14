@@ -20,3 +20,5 @@ git clone https://github.com/huang0h/c4c-challenge-sample.git
 4. Visit `http://localhost:3000` to view the website
     
     4a. The backend will be available at `http://localhost:4000`
+
+npm install @mui/material @emotion/react @emotion/styled
